@@ -18,6 +18,7 @@ var getEmissions = function(vehicle){
   emissionRate = emissionRateFor(vehicle)
   var weight = emissionRate*formattedDistance
   var volume = getVolume(weight)
+  var volumeFacts = ["<p>That's " + volume + " liters of CO2 gas</p>","<p>That's " + Math.floor(weight/90)/10 + " days of you exhaling</p>", "<p>That's enough to fill " + Math.floor(volume/7.104) + " basketballs</p>"]
   if ( weight > 1000 ){
     $('.header h2').html(Math.floor(weight)/1000 + " kilograms of CO2")
   } else if (weight <= 1000 ){
@@ -25,12 +26,13 @@ var getEmissions = function(vehicle){
   } else {
     $('.header h2').html("Select a journey and press refresh")
   }
-  $('div.how-much').html("<p>That's " + volume + " liters of CO2 gas</p><img src='https://en.gravatar.com/userimage/88043209/a1973478ffee0c8c2811c3130e9d4a95.png?size=100'/>")
+  $('div.how-much').html(volumeFacts[Math.floor(Math.random()*volumeFacts.length)] + "<img src='https://en.gravatar.com/userimage/88043209/a1973478ffee0c8c2811c3130e9d4a95.png?size=100'/>")
 }
 var submitForm = function(e){
   e.preventDefault()
   refreshResults()
 }
+
 
 var refreshResults = function(vehicle){
   var vehicle = $('form#vehicle').serializeArray()[0]["value"] || "car"
@@ -64,6 +66,7 @@ String.prototype.splice = function(index, string){
 }
 
 var getVolume = function(weight){
+  //liters
   return Math.floor(weight/0.00198)/1000
 }
 
