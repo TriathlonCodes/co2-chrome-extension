@@ -25,7 +25,7 @@ var getEmissions = function(vehicle){
   } else {
     $('.header h2').html("Select a journey and press refresh")
   }
-  $('div.how-much').html("<p>That's " + volume + " liters of CO2 in gas form</p><img src='imgs/logo48.png'/>")
+  $('div.how-much').html("<p>That's " + volume + " liters of CO2 gas</p><img src='https://en.gravatar.com/userimage/88043209/a1973478ffee0c8c2811c3130e9d4a95.png?size=100'/>")
 }
 var submitForm = function(e){
   e.preventDefault()
